@@ -35,7 +35,7 @@ class Solution:
                     c=-nums[i]
                 l=self.twoSum(nums[i+1:],c)        
                 visited.append(nums[i])
-                print(l, "main1")
+                
             if l!=[] and l != None:
                 if l not in l1:
                     for item in l:
