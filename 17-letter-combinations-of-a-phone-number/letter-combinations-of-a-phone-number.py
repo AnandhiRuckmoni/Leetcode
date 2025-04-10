@@ -17,15 +17,15 @@ class Solution:
             s2=d[digits[i]]
             print(s2)    
             for j in range(len(s)):        
-                #print(s[j])
+                
                 for x in s2:
                     l.append(s[j]+x)  
-                    #print(l)         
-            print("here")    
+                          
+            
             s=l
 
         for i in l:
             if len(i) == len(digits):
-                print(i)
+                
                 l1.append(i)
         return l1
