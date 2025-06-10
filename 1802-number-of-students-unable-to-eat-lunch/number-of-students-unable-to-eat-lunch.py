@@ -11,7 +11,7 @@ class Solution:
                 i+=1
                 l=students[1:x+1]
                 l.append(students[0])
-                print(l)
+                
                 students=l
                 if i > x-1:
                     break
