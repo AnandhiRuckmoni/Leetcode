@@ -7,7 +7,6 @@ class Solution:
             l.insert(0,x)
         low=0
         high=len(l)-1
-        print(l)
         x=-1
         while low <=high:
             mid=(low+high)//2
@@ -18,7 +17,7 @@ class Solution:
                 low=mid+1
             elif l[mid] > target:
                 high=mid-1
-        print(x)
+        
         if x!=-1:
             return True
         else:
