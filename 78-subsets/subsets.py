@@ -5,6 +5,8 @@ class Solution:
         def generateSubsets(Input,op, low):
    
             if low == len(Input):
+                print(op,"hi")
+                #l.append(op[:])
                 l.append(op[:])
                 return 
             op.append(Input[low])
