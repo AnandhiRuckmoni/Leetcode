@@ -39,6 +39,6 @@ class Solution:
         for i in l:
             head=t.addnode(i,head)
             
-        #t.printlist(head)
-        print(type(head))
+        
+        
         return head
