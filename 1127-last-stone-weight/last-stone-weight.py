@@ -5,8 +5,7 @@ class Solution:
         for i in range(len(stones)):
             heapq.heappush(l,-stones[i])
         print(l)
-        if len(l)==2 and l[0] == l[1]:
-            return 0
+        
         while len(l)>1:
             x=-heapq.heappop(l)
             y=-heapq.heappop(l)
