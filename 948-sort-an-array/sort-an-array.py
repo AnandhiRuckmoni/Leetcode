@@ -34,9 +34,9 @@ class Solution:
         
         a=self.merge(a,low,mid,high)
         return a
-    
     def sortArray(self, nums: List[int]) -> List[int]:
+        
         l=self.mergeSort(nums,0,len(nums)-1)
-        print(l)
+        
         return l
     
