@@ -1,44 +1,26 @@
 class Solution:
-    def twoSum(self,nums:list, target: int) -> list:            
-        l=[]
-        l1=[]
-        hashmap={}
-        for i in range(len(nums)):
-            hashmap[nums[i]]=i
-        for i in range(len(nums)):
-            l=[]
-            complement=target-nums[i];
-            if(complement in hashmap and hashmap[complement]!=i):  
-                l.append(nums[i])
-                l.append(complement)
-                l.append(-target)
-            if l!=[]:
-                if sorted(l) not in l1:
-                    l1.append(sorted(l))
-        return l1
-
     def threeSum(self, nums: List[int]) -> List[List[int]]:
+        
+        l1=set()
         nums.sort()
-
         i=0
-        j=len(nums)-1
-        visited=[]
-
-        l1=[]
-
-        for i in range(len(nums)):
-            l=[]
-            if nums[i] not in visited:
-                if nums[i]==0:
-                    c=0
+        j=i+1
+        k=len(nums)-1
+        while i < j < k:            
+            target= 0-nums[i]
+            while j < k:
+                if nums[j]+nums[k]==target:
+                    
+                    l1.add((nums[i],nums[j],nums[k]))
+                    
+                    j+=1
+                    k-=1
+                elif nums[j]+nums[k]< target:
+                    j+=1
                 else:
-                    c=-nums[i]
-                l=self.twoSum(nums[i+1:],c)        
-                visited.append(nums[i])
-                
-            if l!=[] and l != None:
-                if l not in l1:
-                    for item in l:
-                        l1.append(item)
-                    l=[]
-        return l1
+                    k-=1
+            i+=1
+            j=i+1
+            k=len(nums)-1
+        
+        return [list(item) for item in l1]
