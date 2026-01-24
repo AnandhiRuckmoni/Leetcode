@@ -1,7 +1,6 @@
 import sys
 class Solution:
-    def maxArea(self, height: List[int]) -> int:
-        
+    def maxArea(self, height: List[int]) -> int:        
         mxarea = 0
         area = 0 
         i=0
