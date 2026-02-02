@@ -24,7 +24,7 @@ class Solution:
                 j+=1
             else:
                 l.append(nums[d[0]])
-                if nums[d[0]] == nums[i] and d[0]==i:
+                if d[0]==i:
                     del d[0]
                 i+=1
                 j+=1
