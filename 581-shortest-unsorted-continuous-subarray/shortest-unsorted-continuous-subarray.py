@@ -23,6 +23,7 @@ class Solution:
                     break
             i-=1
         return edidx-stidx+1"""
+        #traverse the array keeping track of max as you go from L->R and min as you go from R->L, when there is missorted order keep updating the idx for start and end.O(n) complexity.
         i=0
         j=len(nums)-1
         mx=-sys.maxsize
