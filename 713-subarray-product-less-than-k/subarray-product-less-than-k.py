@@ -3,12 +3,13 @@ class Solution:
     def numSubarrayProductLessThanK(self, nums: List[int], k: int) -> int:
         
         d={}
-        l=[]
-        l=list(set(nums))
-        
-        if len(l)==1 and math.prod(nums)<k:
+        #l=[]
+        #l=list(set(nums))
+        if math.prod(nums) < k:
+             return (len(nums)*(len(nums)+1))//2
+        """if len(l)==1 and math.prod(nums)<k:
             x=len(nums)
-            return (x*(x+1))//2
+            return (x*(x+1))//2"""
         #nums.sort()
         
         i=0
