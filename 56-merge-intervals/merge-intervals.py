@@ -17,7 +17,5 @@ class Solution:
                 l.append([start,end])
                 start=intervals[i][0]
                 end=intervals[i][1]
-        print(start,end,unmerged)
         l.append([start,end])
-        l+=[intervals[i] for i in unmerged]
         return l
