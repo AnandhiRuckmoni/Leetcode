@@ -7,27 +7,24 @@ class Solution:
         l1=[]
         for i in strs:
             if len(d)==0:
-                d[i]=[]
-                d1["".join(sorted(i))]=i
+                d["".join(sorted(i))]=[i]
+                #d1["".join(sorted(i))]=i
             else:
                 x="".join(sorted(i))
                 #found=False
                 #for j in d.keys():
-                if x in d1.keys():
+                if x in d.keys():
                     #y="".join(sorted(j))
                     #if x==y:
-                    d[d1[x]].append(i)
+                    d[x].append(i)
                     #found=True
                     #break
                 else:
-                    d[i]=[]
-                    d1["".join(sorted(i))]=i
+                    d["".join(sorted(i))]=[i]
+                    #d1["".join(sorted(i))]=i
             #print(l1)
         for i,j in d.items():
-            l.append(i)
-            if d[i] !=[]:
-                l=l+d[i]
-            l1.append(l)
-            l=[]
+            #l.append(i)
+            l1.append(j)
         #print(l1)
         return l1
