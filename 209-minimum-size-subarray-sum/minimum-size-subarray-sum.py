@@ -8,18 +8,13 @@ class Solution:
         j=0
         if nums[i] >=target:
             return 1
-        s=nums[i]
-        print(i,j,s,mn)
+        s=0
         while i < len(nums) and j < len(nums):
-            if s < target:
-                j+=1
-                if j < len(nums):
-                    s+=nums[j]
-            else:
+            s+=nums[j]
+            while s >= target:
                 mn=min(mn,j-i+1)
                 s-=nums[i]
                 i+=1
-                #mn=min(mn,j-i+1)
-            print(i,j,s,mn)
-        #print(mn)
+            j+=1
+            
         return(mn)
