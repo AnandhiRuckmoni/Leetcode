@@ -5,12 +5,10 @@ class Solution:
             return 0
         mn=sys.maxsize
         i=0
-        j=i+1
+        j=0
         if nums[i] >=target:
             return 1
-        elif nums[j] >=target:
-            return 1
-        s=sum(nums[i:j+1])
+        s=nums[i]
         print(i,j,s,mn)
         while i < len(nums) and j < len(nums):
             if s < target:
