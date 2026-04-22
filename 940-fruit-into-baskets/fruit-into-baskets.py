@@ -23,7 +23,7 @@ class Solution:
                     while len(d)==2:
                         d[fruits[i]]-=1
                         
-                        print(i,d)
+                        
                         if d[fruits[i]]==0:
                             del d[fruits[i]]
                         i+=1
@@ -31,6 +31,6 @@ class Solution:
         if len(d)>0:
             cnt=sum(d.values())
             mxlen=max(mxlen,cnt)
-        print(mxlen)
+        
         return(mxlen)
                     
