@@ -1,37 +1,36 @@
+from collections import Counter
+import sys
 class Solution:
     def totalFruit(self, fruits: List[int]) -> int:
+        d={}
+        mxlen=-sys.maxsize
+        i=0
         j=0
-        mx=0
-        s=set()
-        l=[]
         while j < len(fruits):
-            if len(s) < 2:
-                if fruits[j] in s:
-                    l.append(fruits[j])
+            if len(d) < 2:
+                if fruits[j] in d.keys():
+                    d[fruits[j]]+=1
                 else:
-                    s.add(fruits[j])
-                    l.append(fruits[j])
+                    d[fruits[j]]=1
                 j+=1
-            else:
-                if fruits[j] in s:
-                    l.append(fruits[j])
+            elif len(d)==2:
+                if fruits[j] in d.keys():
+                    d[fruits[j]]+=1
                     j+=1
                 else:
-                    mx=max(mx,len(l))
-                    lastitem = l[len(l)-1]
-                    lastbutoneidx  = len(l)-2
-                    while lastbutoneidx >=0 and l[lastbutoneidx]==lastitem:
-                        lastbutoneidx-=1
-                    if lastbutoneidx >=0:
-                        element=l[lastbutoneidx]
-                        del l[:lastbutoneidx+1]
-                        s.remove(element)
-                    if fruits[j] not in s:
-                        s.add(fruits[j])
-                        l.append(fruits[j])
-                    else:
-                        l.append(fruits[j])
-                    j+=1
-        mx=max(mx,len(l))        
-        return mx
-                
+                    cnt=sum(d.values())
+                    mxlen=max(mxlen,cnt)
+                    while len(d)==2:
+                        d[fruits[i]]-=1
+                        
+                        print(i,d)
+                        if d[fruits[i]]==0:
+                            del d[fruits[i]]
+                        i+=1
+                    #i+=1
+        if len(d)>0:
+            cnt=sum(d.values())
+            mxlen=max(mxlen,cnt)
+        print(mxlen)
+        return(mxlen)
+                    
