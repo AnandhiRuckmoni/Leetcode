@@ -1,37 +1,54 @@
 from collections import Counter
 class Solution:
-    def findSubstring(self, s: str, words: List[str]) -> List[int]:
+    def findSubstring(self, s: str, words: list[str]) -> list[int]:
+        l=[]
         d=Counter(words)
-        l1=[]
-        if set(words) == set(s) and len(set(s))==1:
-            noofindexes=len(s)-(len(words)*len(words[0]))+1
-            for i in range(noofindexes):
-                l1.append(i)
-            return(l1)
+        wordlength=len(words[0])
+        noofwords=len(words)
+        totalstrlength=noofwords*wordlength
+        #print(len(s),totalstrlength,d)
+        if wordlength==1 and len(d)==1:
+            if len(Counter(s))==1:
+                if s[0]==words[0]:
+                    t=len(s)-list(d.values())[0]
+                    for i in range(t+1):
+                        l.append(i)
+                    return(l)
+            
+        
+        
         i=0
-        k=0
-        j=i+len(words[0])
+        j=i+wordlength
+        s1=""
         cnt=0
-        while k < len(s):
-            if s[k:j] in d.keys():  
-                d[s[k:j]]-=1
-                if d[s[k:j]]==0:
-                    del d[s[k:j]]              
-                j=j+len(words[0])
+        flag=False
+        while i <=j and j <= len(s):
+            s1=s[i:j]
+            
+            if cnt==0 and not flag:
+                idx=i
+                flag=True
+            if s1 in d.keys():
+                d[s1]-=1
+                if d[s1]==0:
+                    del d[s1]
                 cnt+=1
-                k=k+len(words[0])                
+                i+=wordlength
+                j+=wordlength
             else:
-                #print(cnt)
-                if cnt==len(words):                    
-                    l1.append(i)
-                    
-                i+=1
-                k=i
-                j=i+len(words[0])
-                cnt=0
                 d=Counter(words)
-            #print(i,j,k,cnt,s[k:j],len(s),d)
-        if cnt==len(words):                    
-            l1.append(i)
-        print(l1)
-        return(l1)
+                i=idx+1
+                j=i+wordlength
+                cnt=0
+                flag=False
+            #print(i,j,s1,d,cnt,l)
+            if cnt==noofwords and d=={}:
+                l.append(idx)
+                d=Counter(words)
+                cnt=0
+                flag=False
+                i=idx+1
+                j=i+wordlength
+        if cnt==noofwords and d=={}:
+            l.append(idx)
+        return(l)
