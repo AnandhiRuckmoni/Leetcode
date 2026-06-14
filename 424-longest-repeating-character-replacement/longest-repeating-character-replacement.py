@@ -21,11 +21,8 @@ class Solution:
                     if d[s[i]]==0:
                         del d[s[i]]
                     i+=1
-                    windowsize=j-i+1
-                                        
+                    windowsize=j-i+1                                        
                     maxoccurence=sorted(d.items(),key=lambda x:-x[1])[0][1]
-                    #print(s1,t,i,j,windowsize-maxoccurence)
                 j+=1
         mx=max(mx,j-i)
-        print(mx)
         return(mx)
