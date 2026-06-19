@@ -1,20 +1,25 @@
 import sys
 class Solution:
     def minSubArrayLen(self, target: int, nums: List[int]) -> int:
-        if target > sum(nums):
+        if sum(nums) < target:
             return 0
-        mn=sys.maxsize
+        if len(nums)==1:
+            return 1        
         i=0
-        j=0
-        if nums[i] >=target:
-            return 1
-        s=0
-        while i < len(nums) and j < len(nums):
-            s+=nums[j]
-            while s >= target:
+        j=i+1
+        s=nums[i]
+        mn=sys.maxsize
+        if s >=target:
+            mn=1
+        while i <=j and j < len(nums):
+            s+= nums[j]
+            while s >=target:
                 mn=min(mn,j-i+1)
                 s-=nums[i]
                 i+=1
-            j+=1
             
+            j+=1
+        if s >=target:
+            mn=min(mn,j-i+1)
+        
         return(mn)
