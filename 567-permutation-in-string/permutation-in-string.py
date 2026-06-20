@@ -5,6 +5,15 @@ class Solution:
         searchLength=len(s1)
         i=0
         j=i+searchLength
+        """while i <=j and j <= len(s2):
+            word=s2[i:j]
+            d1=Counter(word)
+            if d==d1:
+                return True
+            else:
+                i+=1
+                j+=1
+        return False"""
         while i <=j and j <= len(s2):
             word=s2[i:j]
             d1=Counter(word)
