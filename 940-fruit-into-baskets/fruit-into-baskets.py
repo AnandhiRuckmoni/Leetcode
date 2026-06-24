@@ -1,36 +1,25 @@
-from collections import Counter
-import sys
 class Solution:
-    def totalFruit(self, fruits: List[int]) -> int:
+    def totalFruit(self, nums: List[int]) -> int:
         d={}
-        mxlen=-sys.maxsize
         i=0
         j=0
-        while j < len(fruits):
-            if len(d) < 2:
-                if fruits[j] in d.keys():
-                    d[fruits[j]]+=1
-                else:
-                    d[fruits[j]]=1
+        cnt=0
+        while i <=j and j < len(nums):
+            if nums[j] in d.keys():
+                d[nums[j]]+=1
                 j+=1
-            elif len(d)==2:
-                if fruits[j] in d.keys():
-                    d[fruits[j]]+=1
+            else:
+                if len(d) < 2:
+                    d[nums[j]]=1
                     j+=1
                 else:
-                    cnt=sum(d.values())
-                    mxlen=max(mxlen,cnt)
-                    while len(d)==2:
-                        d[fruits[i]]-=1
-                        
-                        
-                        if d[fruits[i]]==0:
-                            del d[fruits[i]]
+                    cnt=max(cnt,j-i)
+                    while len(d) >=2:
+                        d[nums[i]]-=1
+                        if d[nums[i]]==0:
+                            del d[nums[i]]
                         i+=1
-                    #i+=1
-        if len(d)>0:
-            cnt=sum(d.values())
-            mxlen=max(mxlen,cnt)
-        
-        return(mxlen)
-                    
+                    d[nums[j]]=1
+                    j+=1
+        cnt=max(cnt,j-i)
+        return(cnt)
