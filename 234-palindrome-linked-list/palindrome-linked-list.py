@@ -20,8 +20,7 @@ class Solution:
             l.append(slow.val)
             slow=slow.next            
             fast=fast.next
-            if fast.next!=None:
-                fast=fast.next
+            fast=fast.next
         if cnt %2 !=0:
             slow=slow.next
         while (slow!=None):   
