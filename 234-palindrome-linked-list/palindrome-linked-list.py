@@ -4,45 +4,32 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverseList(self,head):
-        if not head or not head.next:
-            return head
-        p=self.reverseList(head.next)
-        head.next.next=head
-        head.next=None
-        return p
-
-    def getdata(self,head):
+    def lenofList(self,head)->int:
+        cnt=0
+        start=head
+        while start!=None:
+            start=start.next
+            cnt+=1
+        return cnt
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         l=[]
-        root=head
-        while root:
-            l.append(root.val)
-            root=root.next
-        return l
-    def comparelists(self,head1,head2):
-        root1=head1
-        root2=head2
-        print(root1.val,root2.val,root1.next,root2.next)
-        while root1 and root2:
-            
-            if root1.val == root2.val:
-                root1=root1.next
-                root2=root2.next
+        cnt=self.lenofList(head)
+        slow=head
+        fast=head
+        while(fast!=None and fast.next!=None):
+            l.append(slow.val)
+            slow=slow.next            
+            fast=fast.next
+            if fast.next!=None:
+                fast=fast.next
+        if cnt %2 !=0:
+            slow=slow.next
+        while (slow!=None):   
+            print(slow.val,l[-1])         
+            if slow.val==l[-1]:
+                l.pop()
             else:
                 return False
+            slow=slow.next
         return True
-    def printlist(self,head):
-        root=head
-        while root:
-            print(root.val)
-            root=root.next
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
         
-        
-        l=self.getdata(head)
-        self.head=self.reverseList(head)
-        l1=self.getdata(self.head)
-        if l == l1:
-            return True
-        else:
-            return False
