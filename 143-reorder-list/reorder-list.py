@@ -30,15 +30,11 @@ class Solution:
             slow=slow.next
             fast=fast.next.next
             l.append(slow)
-        #2nd list starts from slow.next and ends till null
         ll2=self.reverseList(slow.next)
-        slow.next=None
-        
+        slow.next=None        
         head2=ll2
-        head1=head
-        #print(head2.val,head1.val)
+        head1=head        
         while head2!=None:
-            print(head2.val)
             t=head1.next
             t2=head2.next
             head1.next=head2
